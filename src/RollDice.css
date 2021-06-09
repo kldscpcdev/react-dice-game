@@ -1,0 +1,9 @@
+.RollDice-button {
+  width: 10rem;
+  height: 3rem;
+  background-color: lightsalmon;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.333rem;
+  letter-spacing: 0.5rem;
+}
