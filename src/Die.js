@@ -5,7 +5,9 @@ class Die extends Component {
   render() {
     return (
       <div>
-        <i className="fas fa-dice-one Die-dice"></i>
+        <div>
+          <i className={`fas ${this.props.diceIcon} Die-dice`}></i>
+        </div>
       </div>
     );
   }

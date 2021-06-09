@@ -5,32 +5,39 @@ import "./RollDice.css";
 class RollDice extends Component {
   static defaultProps = {
     diceFaceClass: [
-      "fas fa-dice-one", // array position 0
-      "fas fa-dice-two",
-      "fas fa-dice-three",
-      "fas fa-dice-four",
-      "fas fa-dice-five",
-      "fas fa-dice-six",
+      "fa-dice-one", // array position 0
+      "fa-dice-two",
+      "fa-dice-three",
+      "fa-dice-four",
+      "fa-dice-five",
+      "fa-dice-six",
     ],
   };
   constructor(props) {
     super(props);
     this.roll = this.roll.bind(this);
-    // this.setState({
-    //   diceOne: `${diceFaceOne}`,
-    //   diceTwo: `${diceFaceTwo}`,
-    // });
+    this.state = {
+      faceOne: `fa-dice-one`,
+      faceTwo: `fa-dice-one`,
+    };
   }
   roll() {
-    let rand = Math.floor(Math.random() * this.props.diceFaceClass.length);
-    console.log(rand, this.props.diceFaceClass[rand]);
+    let randA = Math.floor(Math.random() * this.props.diceFaceClass.length);
+    let randB = Math.floor(Math.random() * this.props.diceFaceClass.length);
+    let diceFaceOne = this.props.diceFaceClass[randA];
+    let diceFaceTwo = this.props.diceFaceClass[randB];
+
+    this.setState({
+      faceOne: `${diceFaceOne}`,
+      faceTwo: `${diceFaceTwo}`,
+    });
   }
 
   render() {
     return (
       <div>
-        <Die />
-        <Die />
+        <Die diceIcon={this.state.faceOne} />
+        <Die diceIcon={this.state.faceTwo} />
         <button className="RollDice-button" onClick={this.roll}>
           ROLL 🎲
         </button>
