@@ -19,28 +19,45 @@ class RollDice extends Component {
     this.state = {
       faceOne: `fa-dice-one`,
       faceTwo: `fa-dice-one`,
+      isRolling: false,
     };
   }
   roll() {
+    //pick 2 new faces
     let randA = Math.floor(Math.random() * this.props.diceFaceClass.length);
     let randB = Math.floor(Math.random() * this.props.diceFaceClass.length);
     let diceFaceOne = this.props.diceFaceClass[randA];
     let diceFaceTwo = this.props.diceFaceClass[randB];
 
+    // Set state with new rolls
     this.setState({
       faceOne: `${diceFaceOne}`,
       faceTwo: `${diceFaceTwo}`,
+      isRolling: true,
     });
+
+    // set rolling to false after 1 second
+    setTimeout(() => {
+      this.setState({ isRolling: false });
+    }, 1000);
   }
 
   render() {
     return (
       <div>
-        <Die diceIcon={this.state.faceOne} />
-        <Die diceIcon={this.state.faceTwo} />
-        <button className="RollDice-button" onClick={this.roll}>
-          ROLL 🎲
-        </button>
+        <div className="RollDice-dice-row">
+          <Die diceIcon={this.state.faceOne} rolling={this.state.isRolling} />
+          <Die diceIcon={this.state.faceTwo} rolling={this.state.isRolling} />
+        </div>
+        <div>
+          <button
+            className="RollDice-button"
+            onClick={this.roll}
+            disabled={this.state.isRolling}
+          >
+            {this.state.isRolling ? "ROLLING..." : "ROLL ME"}
+          </button>
+        </div>
       </div>
     );
   }

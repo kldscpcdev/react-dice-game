@@ -6,7 +6,11 @@ class Die extends Component {
     return (
       <div>
         <div>
-          <i className={`fas ${this.props.diceIcon} Die-dice`}></i>
+          <i
+            className={`fas ${this.props.diceIcon} Die-dice ${
+              this.props.rolling ? "shaking" : ""
+            }`}
+          />
         </div>
       </div>
     );

@@ -1,4 +1,10 @@
 .App {
+  margin-top: 3rem;
   text-align: center;
   font-size: 1.777rem;
+}
+
+.App .title {
+  font-size: 7.478rem;
+  color: #f0eb42;
 }
