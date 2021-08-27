@@ -8,7 +8,7 @@ class Die extends Component {
         <div>
           <i
             className={`fas ${this.props.diceIcon} Die-dice ${
-              this.props.rolling ? "shaking" : ""
+              this.props.rolling && "shaking"
             }`}
           />
         </div>
